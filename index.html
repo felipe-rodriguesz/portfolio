@@ -1,184 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projetos de Felipe Rodrigues em desenvolvimento fullstack, APIs, testes e engenharia de computação.">
-    <meta name="theme-color" content="#0d1411">
-    <meta property="og:title" content="Felipe Rodrigues | Desenvolvimento fullstack">
-    <meta property="og:description" content="Projetos de desenvolvimento fullstack, software e engenharia de computação.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://felipe-rodriguesz.github.io/portfolio/">
-    <link rel="canonical" href="https://felipe-rodriguesz.github.io/portfolio/">
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <title>Felipe Rodrigues | Portfólio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1c">
+  <meta name="description" content="Portfólio de Felipe Rodrigues, estudante de Engenharia de Computação na UTFPR. Projetos em desenvolvimento full stack, APIs, automação e engenharia.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Felipe Rodrigues | Desenvolvimento Full Stack">
+  <meta property="og:description" content="Projetos de software, da interface à API, e minha trajetória na Engenharia de Computação.">
+  <meta property="og:url" content="https://felipe-rodriguesz.github.io/portfolio/">
+  <link rel="canonical" href="https://felipe-rodriguesz.github.io/portfolio/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Felipe Rodrigues | Portfólio de Desenvolvimento Full Stack</title>
 </head>
-
 <body>
-    <div class="page-glow page-glow-one" aria-hidden="true"></div>
-    <div class="page-glow page-glow-two" aria-hidden="true"></div>
-
-    <header class="site-header">
-        <a class="brand" href="#inicio" aria-label="Voltar ao início">FR<span>.</span></a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-        <nav id="site-nav" class="site-nav" aria-label="Navegação principal">
-            <a href="#projetos">Projetos</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#habilidades">Habilidades</a>
-            <a href="#contato">Contato</a>
-        </nav>
-        <div class="header-links">
-            <a class="header-link" href="https://github.com/felipe-rodriguesz" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
-            <a class="header-link" href="https://www.linkedin.com/in/felipe-dos-santos-rodrigues-bb187b289/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="#inicio" aria-label="Felipe Rodrigues, voltar ao início"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>Felipe<span class="brand-dot">.</span>dev</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">☰</span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Navegação principal"><a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#tecnologias">Habilidades</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a></nav>
+    <a class="button button-small header-cta" href="#contato">Entrar em contato <span aria-hidden="true">↗</span></a>
+  </div><span class="scroll-progress" aria-hidden="true"></span></header>
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title"><div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="eyebrow-line"></span> DESENVOLVEDOR FULL STACK</span>
+        <h1 id="hero-title">Olá, sou o <span>Felipe.</span><br>Crio aplicações web.</h1>
+        <p>Estudo Engenharia de Computação na UTFPR e desenvolvo aplicações da interface à API, com atenção aos dados e à experiência de uso.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#projetos">Ver meus projetos <span aria-hidden="true">↗</span></a><a class="button button-outline" href="https://github.com/felipe-rodriguesz" target="_blank" rel="noopener noreferrer">Explorar GitHub <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-stack"><span class="mini-label">TECNOLOGIAS EM DESTAQUE</span><ul aria-label="Tecnologias em destaque"><li><img src="assets/skills/html5.svg" alt="HTML5" title="HTML5" width="38" height="38"></li><li><img src="assets/skills/css3.svg" alt="CSS3" title="CSS3" width="38" height="38"></li><li><img src="assets/skills/javascript.svg" alt="JavaScript" title="JavaScript" width="38" height="38"></li><li><img src="assets/skills/typescript.svg" alt="TypeScript" title="TypeScript" width="38" height="38"></li><li><img src="assets/skills/react.svg" alt="React" title="React" width="38" height="38"></li><li><img class="icon-light" src="assets/skills/nextjs.svg" alt="Next.js" title="Next.js" width="38" height="38"></li><li><img src="assets/skills/nodejs.svg" alt="Node.js" title="Node.js" width="38" height="38"></li><li><img src="assets/skills/git.svg" alt="Git" title="Git" width="38" height="38"></li></ul></div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-dots" aria-hidden="true"></div><div class="portrait-halo" aria-hidden="true"></div>
+        <div class="portrait-frame"><img src="assets/hero-portrait.png" alt="Felipe Rodrigues à frente de um notebook" width="1388" height="1133" fetchpriority="high"></div>
+        <div class="visual-orbit orbit-one" aria-hidden="true"></div><div class="visual-orbit orbit-two" aria-hidden="true"></div>
+        <div class="code-card" aria-hidden="true"><div class="code-card-top"><span>&lt;/&gt; projeto.ts</span><i></i></div><pre><span class="code-purple">const</span> felipe = {
+  foco: <span class="code-green">'full stack'</span>,
+  pratica: [<span class="code-green">'interfaces'</span>,
+            <span class="code-green">'APIs'</span>, <span class="code-green">'dados'</span>],
+  base: <span class="code-green">'UTFPR'</span>
+};</pre></div>
+      </div>
+    </div></section>
+    <div class="profile-sections">
+    <section class="section section-about" id="sobre" aria-labelledby="about-title"><div class="container about-grid">
+      <div class="about-copy"><span class="section-kicker">SOBRE MIM</span><h2 id="about-title">Aprender, construir <span>e entender como funciona.</span></h2><p>Na Engenharia de Computação, encontrei espaço para unir programação e resolução de problemas. Hoje meu foco está em desenvolvimento de software, especialmente aplicações web com interface, API e banco de dados.</p><p>Também participo de uma equipe de robótica da UTFPR e desenvolvi pesquisa voluntária em simulação numérica. Essas experiências me acostumaram a investigar erros, testar soluções e trabalhar com pessoas de áreas diferentes.</p><a class="text-link" href="https://www.linkedin.com/in/felipe-dos-santos-rodrigues-bb187b289/" target="_blank" rel="noopener noreferrer">Ver mais sobre mim <span aria-hidden="true">↗</span></a></div>
+      <div class="experience-grid" aria-label="Formação e experiências"><div class="experience-card"><span class="experience-icon" aria-hidden="true">⌘</span><strong>UTFPR</strong><span>Engenharia de Computação<br>Câmpus Apucarana</span></div><div class="experience-card"><span class="experience-icon" aria-hidden="true">⌨</span><strong>Full Stack</strong><span>Interfaces, APIs,<br>bancos de dados e testes</span></div><div class="experience-card"><span class="experience-icon" aria-hidden="true">⚙</span><strong>Robótica</strong><span>Software para robôs<br>autônomos em equipe</span></div><div class="experience-card"><span class="experience-icon" aria-hidden="true">▧</span><strong>Pesquisa</strong><span>Modelagem numérica<br>em Fortran e MATLAB</span></div></div>
+    </div></section>
+    <section class="section section-skills" id="tecnologias" aria-labelledby="skills-title"><div class="container">
+      <div class="section-heading centered"><span class="section-kicker">HABILIDADES</span><h2 id="skills-title">Tecnologias que mais utilizei</h2></div>
+      <div class="skills-grid">
+        <div class="skill-column">
+          <div class="skill-item" style="--level:75%"><img src="assets/skills/html5.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>HTML5</span><span>75%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de HTML5" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><span></span></div></div></div>
+          <div class="skill-item" style="--level:70%"><img src="assets/skills/css3.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>CSS3</span><span>70%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de CSS3" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span></span></div></div></div>
+          <div class="skill-item" style="--level:80%"><img src="assets/skills/javascript.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>JavaScript</span><span>80%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de JavaScript" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><span></span></div></div></div>
+          <div class="skill-item" style="--level:75%"><img src="assets/skills/typescript.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>TypeScript</span><span>75%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de TypeScript" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><span></span></div></div></div>
         </div>
-    </header>
-
-    <main>
-        <section id="inicio" class="hero section-shell">
-            <div class="hero-copy">
-                <p class="eyebrow"><span class="status-dot"></span> Engenharia de Computação · UTFPR</p>
-                <h1>Desenvolvo software da <em>interface</em> à API.</h1>
-                <p class="hero-description">Sou Felipe Rodrigues. Crio aplicações web com atenção à experiência de uso, persistência de dados e testes. Também exploro sistemas, robótica e computação científica.</p>
-                <div class="profile-card">
-                    <img src="assets/profile-photo.jpeg" alt="Foto de Felipe Rodrigues">
-                    <div><span>Desenvolvimento fullstack</span><strong>Felipe Rodrigues</strong></div>
-                </div>
-                <div class="hero-actions">
-                    <a class="button button-primary" href="#projetos">Ver projetos <span>↓</span></a>
-                    <a class="button button-quiet" href="#contato">Vamos conversar <span>↗</span></a>
-                </div>
-            </div>
-            <div class="hero-art" aria-label="Painel visual com áreas de interesse">
-                <div class="art-grid"></div>
-                <div class="code-window">
-                    <div class="window-bar"><span></span><span></span><span></span><small>felipe.dev</small></div>
-                    <pre><code><b>const</b> developer = {
-  focus: <i>"fullstack"</i>,
-  build: [<i>"interface"</i>, <i>"API"</i>, <i>"dados"</i>],
-  verify: <i>"testes"</i>
-};</code></pre>
-                    <div class="code-caption"><span>01</span> projetos com código e contexto</div>
-                </div>
-                <div class="art-note note-top">BASE<br><strong>APUCARANA</strong></div>
-                <div class="art-note note-bottom">FOCO<br><strong>FULLSTACK · SISTEMAS · ENGENHARIA</strong></div>
-            </div>
-        </section>
-
-        <section id="projetos" class="projects section-shell section-block">
-            <div class="section-heading">
-                <div class="section-label"><span>01</span> Projetos em destaque</div>
-                <p>Aplicações fullstack primeiro; depois, projetos de software e engenharia que ampliam meu repertório.</p>
-            </div>
-            <div class="project-grid">
-                <article class="project-card project-card-visual featured">
-                    <div class="project-topline"><span class="project-number">01 / 08</span><span class="project-type">Aplicação fullstack</span></div>
-                    <img class="project-preview" src="assets/tasks-dashboard.png" alt="Painel do gerenciador com tarefas pendentes e concluídas" loading="lazy">
-                    <h3>Gerenciador de Tarefas</h3>
-                    <p>Aplicação web com cadastro, login, busca e tarefas isoladas por usuário. API em Express com PostgreSQL, JWT em cookie HttpOnly e testes de integração.</p>
-                    <div class="project-tags"><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>Jest</span></div>
-                    <a class="project-link" href="https://github.com/felipe-rodriguesz/CRUD_de_Tarefas_Express" target="_blank" rel="noopener noreferrer">Ver código e documentação <span>↗</span></a>
-                </article>
-                <article class="project-card project-card-visual featured">
-                    <div class="project-topline"><span class="project-number">02 / 08</span><span class="project-type">Aplicação fullstack</span></div>
-                    <img class="project-preview" src="assets/devroast-home.png" alt="Editor de código e prévia do ranking do DevRoast" loading="lazy">
-                    <h3>DevRoast</h3>
-                    <p>Editor de código com detecção de linguagem, análise por IA e ranking. Interface em Next.js e React; API tipada com tRPC e persistência em PostgreSQL.</p>
-                    <div class="project-tags"><span>Next.js</span><span>TypeScript</span><span>tRPC</span><span>Drizzle</span></div>
-                    <a class="project-link" href="https://github.com/felipe-rodriguesz/devroast" target="_blank" rel="noopener noreferrer">Ver código e documentação <span>↗</span></a>
-                </article>
-                <article class="project-card">
-                    <div class="project-topline"><span class="project-number">03 / 08</span><span class="project-type">Java · Regras de negócio</span></div>
-                    <h3>SistemaPagamentos</h3>
-                    <p>Aplicação desktop acadêmica para gerenciar aluguéis, reservas e pagamentos simulados, com testes das regras de negócio em JUnit.</p>
-                    <div class="project-tags"><span>Java</span><span>Swing</span><span>JUnit</span></div>
-                    <a class="project-link" href="https://github.com/felipe-rodriguesz/SistemaPagamentos" target="_blank" rel="noopener noreferrer">Explorar projeto <span>↗</span></a>
-                </article>
-                <article class="project-card">
-                    <div class="project-topline"><span class="project-number">04 / 08</span><span class="project-type">Compiladores</span></div>
-                    <h3>Compilador GYH</h3>
-                    <p>Compilador acadêmico com gramática em ANTLR, verificações semânticas básicas e geração de código-fonte C.</p>
-                    <div class="project-tags"><span>Java</span><span>ANTLR</span><span>Linguagens</span></div>
-                    <a class="project-link" href="https://github.com/felipe-rodriguesz/CompiladorGYH-ANTLR" target="_blank" rel="noopener noreferrer">Explorar projeto <span>↗</span></a>
-                </article>
-                <article class="project-card">
-                    <div class="project-topline"><span class="project-number">05 / 08</span><span class="project-type">Automação</span></div>
-                    <h3>Monitor de Preços</h3>
-                    <p>Bot que acompanha preços em marketplaces e envia alertas pelo Telegram quando detecta variações.</p>
-                    <div class="project-tags"><span>Python</span><span>Playwright</span><span>Telegram</span></div>
-                    <a class="project-link" href="https://github.com/felipe-rodriguesz/monitor-precos-bot" target="_blank" rel="noopener noreferrer">Explorar projeto <span>↗</span></a>
-                </article>
-                <article class="project-card">
-                    <div class="project-topline"><span class="project-number">06 / 08</span><span class="project-type">Visão computacional</span></div>
-                    <h3>LeopaNet</h3>
-                    <p>Experimentos de classificação de imagens e reconhecimento de gestos feitos durante a trilha Python da NLW Operator.</p>
-                    <div class="project-tags"><span>Python</span><span>PyTorch</span><span>MediaPipe</span></div>
-                    <a class="project-link" href="https://github.com/felipe-rodriguesz/LeopaNet" target="_blank" rel="noopener noreferrer">Explorar projeto <span>↗</span></a>
-                </article>
-                <article class="project-card">
-                    <div class="project-topline"><span class="project-number">07 / 08</span><span class="project-type">Comunicação de dados</span></div>
-                    <h3>Comunicação Óptica</h3>
-                    <p>Transmissão entre dois Arduinos por LED e LDR, com codificação digital, redundância e CRC-8. Enlace validado em bancada.</p>
-                    <div class="project-tags"><span>Arduino</span><span>C++</span><span>CRC-8</span></div>
-                    <a class="project-link" href="https://github.com/felipe-rodriguesz/Projeto-ComunicacaoDeDados" target="_blank" rel="noopener noreferrer">Explorar projeto <span>↗</span></a>
-                </article>
-                <article class="project-card">
-                    <div class="project-topline"><span class="project-number">08 / 08</span><span class="project-type">Computação científica</span></div>
-                    <h3>Simulação Térmica 2D</h3>
-                    <p>Modelos numéricos em Fortran para transferência de calor em microprocessadores, com visualização dos resultados no MATLAB.</p>
-                    <div class="project-tags"><span>Fortran</span><span>MATLAB</span><span>Simulação</span></div>
-                    <a class="project-link" href="https://github.com/felipe-rodriguesz/microprocessador_2D" target="_blank" rel="noopener noreferrer">Explorar projeto <span>↗</span></a>
-                </article>
-            </div>
-            <p class="more-projects">Outros estudos e experimentos estão no meu <a href="https://github.com/felipe-rodriguesz?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub ↗</a>.</p>
-        </section>
-
-        <section id="sobre" class="about section-shell section-block">
-            <div class="section-label"><span>02</span> Sobre mim</div>
-            <div class="about-content">
-                <h2>Da ideia ao código,<br><em>com atenção aos detalhes.</em></h2>
-                <div class="about-text">
-                    <p>Estudo Engenharia de Computação na UTFPR, câmpus Apucarana. Nos meus projetos de software, trabalho com interfaces, APIs, banco de dados e testes, buscando entender o fluxo inteiro da aplicação.</p>
-                    <p>A formação também me levou à robótica, comunicação entre dispositivos e simulações numéricas. Essas experiências ampliaram minha prática de investigação, implementação e validação.</p>
-                    <a class="text-link" href="https://www.linkedin.com/in/felipe-dos-santos-rodrigues-bb187b289/" target="_blank" rel="noreferrer">Mais sobre minha trajetória <span>↗</span></a>
-                </div>
-            </div>
-        </section>
-
-        <section id="habilidades" class="skills section-shell section-block">
-            <div class="section-label"><span>03</span> Tecnologias</div>
-            <div class="skills-layout">
-                <h2>Ferramentas que uso nos projetos.</h2>
-                <div class="skill-list">
-                    <div><span>01</span><strong>Linguagens</strong><p>JavaScript, TypeScript, Java, Python, SQL</p></div>
-                    <div><span>02</span><strong>Web & backend</strong><p>React, Next.js, Node.js, Express, PostgreSQL</p></div>
-                    <div><span>03</span><strong>Dados & IA</strong><p>PyTorch, MediaPipe, Pandas, MATLAB</p></div>
-                    <div><span>04</span><strong>Ferramentas</strong><p>Git, Docker, Linux, Jest, JUnit</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contato" class="contact section-shell section-block">
-            <div class="contact-card">
-                <div class="section-label"><span>04</span> Contato</div>
-                <h2>Vamos construir<br><em>algo relevante.</em></h2>
-                <p>Vamos conversar sobre desenvolvimento de software, projetos e oportunidades de colaboração.</p>
-                <a class="contact-email" href="mailto:felipe7rodrigues54@gmail.com">felipe7rodrigues54@gmail.com <span>↗</span></a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer section-shell">
-        <span>© 2026 Felipe Rodrigues</span>
-        <span>Feito com curiosidade e código.</span>
-        <a href="#inicio">Voltar ao topo ↑</a>
-    </footer>
-
-    <script src="script.js"></script>
+        <div class="skill-column">
+          <div class="skill-item" style="--level:65%"><img src="assets/skills/react.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>React</span><span>65%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de React" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"><span></span></div></div></div>
+          <div class="skill-item" style="--level:65%"><img class="icon-light" src="assets/skills/nextjs.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>Next.js</span><span>65%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de Next.js" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"><span></span></div></div></div>
+          <div class="skill-item" style="--level:80%"><img src="assets/skills/nodejs.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>Node.js</span><span>80%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de Node.js" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><span></span></div></div></div>
+          <div class="skill-item" style="--level:75%"><img class="icon-light" src="assets/skills/express.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>Express</span><span>75%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de Express" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><span></span></div></div></div>
+        </div>
+        <div class="skill-column">
+          <div class="skill-item" style="--level:70%"><img src="assets/skills/postgresql.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>PostgreSQL</span><span>70%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de PostgreSQL" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span></span></div></div></div>
+          <div class="skill-item" style="--level:85%"><img src="assets/skills/git.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>Git</span><span>85%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de Git" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><span></span></div></div></div>
+          <div class="skill-item" style="--level:80%"><img src="assets/skills/python.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>Python</span><span>80%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de Python" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><span></span></div></div></div>
+          <div class="skill-item" style="--level:75%"><img src="assets/skills/java.svg" alt="" loading="lazy"><div class="skill-detail"><div class="skill-meta"><span>Java</span><span>75%</span></div><div class="skill-meter" role="meter" aria-label="Uso estimado de Java" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><span></span></div></div></div>
+        </div>
+      </div>
+    </div></section>
+    </div>
+    <div class="final-sections">
+    <section class="section section-projects" id="projetos" aria-labelledby="projects-title"><div class="container">
+      <div class="section-heading centered"><span class="section-kicker">PROJETOS EM DESTAQUE</span><h2 id="projects-title">Software que tirei do papel</h2></div>
+      <div class="projects-carousel" data-carousel aria-label="Projetos de Felipe Rodrigues">
+        <div class="projects-viewport" id="projects-viewport" tabindex="0" aria-label="Arraste ou use as setas para ver mais projetos">
+          <div class="projects-track">
+            <article class="featured-card"><div class="featured-image image-tasks"><img src="assets/tasks-dashboard.png" alt="Tela do gerenciador de tarefas com indicadores e lista de tarefas" loading="lazy"><span class="image-index">01 / FULL STACK</span></div><div class="featured-body"><h3>Gerenciador de Tarefas</h3><p>Aplicação com cadastro, login e busca de tarefas. API em Express e PostgreSQL, com autenticação e testes de integração.</p><a class="card-link" href="https://github.com/felipe-rodriguesz/CRUD_de_Tarefas_Express" target="_blank" rel="noopener noreferrer">Ver projeto no GitHub <span aria-hidden="true">↗</span></a></div></article>
+            <article class="featured-card"><div class="featured-image image-devroast"><img src="assets/devroast-home.png" alt="Tela do DevRoast com editor de código" loading="lazy"><span class="image-index">02 / FULL STACK + IA</span></div><div class="featured-body"><h3>DevRoast</h3><p>Envio de código para análise por IA e comparação em ranking. Desenvolvido com Next.js, TypeScript, tRPC e PostgreSQL.</p><a class="card-link" href="https://github.com/felipe-rodriguesz/devroast" target="_blank" rel="noopener noreferrer">Ver projeto no GitHub <span aria-hidden="true">↗</span></a></div></article>
+            <article class="featured-card"><div class="featured-image"><div class="project-art art-payments" aria-hidden="true"><span class="art-glyph">{ }</span><span>JAVA · POO</span></div><span class="image-index">03 / JAVA</span></div><div class="featured-body"><h3>SistemaPagamentos</h3><p>Protótipo desktop para aluguéis, reservas e pagamentos simulados, com regras de negócio testadas em JUnit.</p><a class="card-link" href="https://github.com/felipe-rodriguesz/SistemaPagamentos" target="_blank" rel="noopener noreferrer">Ver projeto no GitHub <span aria-hidden="true">↗</span></a></div></article>
+            <article class="featured-card"><div class="featured-image"><div class="project-art art-prices" aria-hidden="true"><span class="art-glyph">↘</span><span>PYTHON · AUTOMAÇÃO</span></div><span class="image-index">04 / AUTOMAÇÃO</span></div><div class="featured-body"><h3>Monitor de Preços</h3><p>Bot que acompanha preços em lojas online e envia alertas pelo Telegram quando detecta mudanças.</p><a class="card-link" href="https://github.com/felipe-rodriguesz/monitor-precos-bot" target="_blank" rel="noopener noreferrer">Ver projeto no GitHub <span aria-hidden="true">↗</span></a></div></article>
+            <article class="featured-card"><div class="featured-image"><div class="project-art art-compiler" aria-hidden="true"><span class="art-glyph">λ</span><span>JAVA · COMPILADORES</span></div><span class="image-index">05 / COMPILADORES</span></div><div class="featured-body"><h3>Compilador GYH</h3><p>Compilador acadêmico com ANTLR, análise semântica e geração de código em C.</p><a class="card-link" href="https://github.com/felipe-rodriguesz/CompiladorGYH-ANTLR" target="_blank" rel="noopener noreferrer">Ver projeto no GitHub <span aria-hidden="true">↗</span></a></div></article>
+            <article class="featured-card"><div class="featured-image"><div class="project-art art-thermal" aria-hidden="true"><span class="art-glyph">▦</span><span>FORTRAN · MATLAB</span></div><span class="image-index">06 / PESQUISA</span></div><div class="featured-body"><h3>Simulação Térmica 2D</h3><p>Modelos numéricos de transferência de calor em microprocessadores, desenvolvidos com Fortran e MATLAB.</p><a class="card-link" href="https://github.com/felipe-rodriguesz/microprocessador_2D" target="_blank" rel="noopener noreferrer">Ver projeto no GitHub <span aria-hidden="true">↗</span></a></div></article>
+          </div>
+        </div>
+        <div class="carousel-controls"><button class="carousel-arrow" type="button" data-carousel-prev aria-label="Projetos anteriores">←</button><div class="carousel-dots" data-carousel-dots aria-label="Páginas dos projetos"></div><button class="carousel-arrow" type="button" data-carousel-next aria-label="Próximos projetos">→</button></div>
+      </div>
+    </div></section>
+    <section class="section section-contact" id="contato" aria-labelledby="contact-title"><div class="container contact-grid">
+      <div class="contact-intro"><span class="section-kicker">VAMOS CONVERSAR</span><h2 id="contact-title">Gostou do que viu?</h2><p>Se quiser conversar sobre desenvolvimento de software, meus projetos ou uma oportunidade, pode me chamar.</p><button class="button button-primary" id="copy-email" type="button" data-copy-email data-email="felipe7rodrigues54@gmail.com">Copiar e-mail <span aria-hidden="true">⧉</span></button><p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p></div>
+      <div class="contact-panel">
+        <span class="mini-label">ME ENCONTRE TAMBÉM</span>
+        <div class="social-icons" aria-label="Redes sociais">
+          <a class="social-icon" href="https://github.com/felipe-rodriguesz" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub de Felipe Rodrigues"><img class="github-icon" src="assets/social/github.svg" alt="" width="23" height="23"></a>
+          <a class="social-icon" href="https://www.linkedin.com/in/felipe-dos-santos-rodrigues-bb187b289/" target="_blank" rel="noopener noreferrer" aria-label="Abrir LinkedIn de Felipe Rodrigues"><img src="assets/social/linkedin.svg" alt="" width="23" height="23"></a>
+        </div>
+        <button class="contact-detail" type="button" data-copy-email data-email="felipe7rodrigues54@gmail.com" aria-label="Copiar e-mail felipe7rodrigues54@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg><span>felipe7rodrigues54@gmail.com</span></button>
+        <a class="contact-detail" href="tel:+5574991138602"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"></path></svg><span>+55 (74) 99113-8602</span></a>
+        <span class="social-feedback" id="social-feedback" role="status" aria-live="polite"></span>
+      </div>
+    </div></section>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container"><span>© 2026 Felipe Rodrigues</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
+  <script src="script.js"></script>
 </body>
-
 </html>
