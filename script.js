@@ -1,29 +1,20 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('.site-nav');
-const filterButtons = document.querySelectorAll('.filter-button');
-const projectCards = document.querySelectorAll('.project-card');
 
-menuToggle.addEventListener('click', () => {
-    const isOpen = siteNav.classList.toggle('is-open');
+function setMenuOpen(isOpen) {
+    siteNav.classList.toggle('is-open', isOpen);
     menuToggle.setAttribute('aria-expanded', String(isOpen));
     menuToggle.textContent = isOpen ? 'Fechar' : 'Menu';
+}
+
+menuToggle.addEventListener('click', () => {
+    setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
 });
 
-document.querySelectorAll('.site-nav a').forEach((link) => {
-    link.addEventListener('click', () => {
-        siteNav.classList.remove('is-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.textContent = 'Menu';
-    });
+siteNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenuOpen(false));
 });
 
-filterButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        const selectedFilter = button.dataset.filter;
-        filterButtons.forEach((item) => item.classList.toggle('is-active', item === button));
-        projectCards.forEach((card) => {
-            const shouldShow = selectedFilter === 'todos' || card.dataset.category === selectedFilter;
-            card.hidden = !shouldShow;
-        });
-    });
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMenuOpen(false);
 });
