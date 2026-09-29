@@ -19,7 +19,7 @@ Identidade editorial de engenharia: nome completo, Computer Engineering, full st
 
 Mantidos HTML/CSS/JS e todos os controles. CSS reorganizado em tokens, layout, capítulos, componentes e breakpoints. Três cards desktop, dois tablet, um mobile. Sobre + habilidades e projetos + contato mantêm agrupamento de altura mínima de viewport, crescendo quando o conteúdo exige.
 
-GSAP 3.13.0 e ScrollTrigger fixados e servidos localmente. Timelines em motion.js, separadas das funcionalidades em script.js. Máscaras nos títulos, stagger de experiências, traçado SVG e barras coordenadas, profundidade ligada ao scroll apenas no desktop. Nenhum preloader bloqueante. Conteúdo visível se GSAP falhar.
+GSAP 3.13.0 e ScrollTrigger fixados e servidos localmente. Timelines em motion.js, separadas das funcionalidades em script.js. Máscaras nos títulos, stagger de experiências, traçado SVG e barras coordenadas, profundidade ligada ao scroll apenas no desktop. Na primeira revisão não havia preloader; a introdução adicionada posteriormente está descrita abaixo. Conteúdo visível se GSAP falhar.
 
 Não se adicionou Barba (não há troca de páginas), ScrollSmoother (rolagem nativa é suficiente), Three.js ou shaders (a função visual proposta é resolvida por SVG/CSS sem cena GPU contínua), nem plugins extras para máscaras/desenho simples. Cursor nativo preserva precisão e reconhecimento de links.
 
@@ -30,3 +30,6 @@ Referências técnicas: https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/ e https
 
 ## Revisão de motion após feedback
 A primeira passagem ficou discreta demais. A segunda acrescenta caracteres com perspectiva no nome, títulos com máscaras por palavra e reversão ao sair da tela, contraste progressivo no texto, revelação escalonada dos projetos, parallax mais perceptível, órbita ativa somente no hero visível e aba ativa, inclinação das capas e botões magnéticos para mouse preciso. O split usa aria-label e é desfeito no cleanup; reduced-motion remove todos os ScrollTriggers e restaura o HTML original. Testado em navegador: matrizes dos caracteres mudam durante a entrada, 11 triggers desktop, zero após reduced-motion, sem duplicação de split e sem erros JS.
+
+## Introdução de carregamento
+A pedido do usuário, aplicado o conceito da referência: overlay fixo, monograma preenchido verticalmente e progresso suavizado dos recursos essenciais (retrato, fontes e DOM). Não representa bytes transferidos. Preloader independente de GSAP com saída de 450 ms; motion aguarda a liberação. Bootstrap inline libera a página em no máximo seis segundos mesmo se o script externo falhar. Sem JS o overlay permanece oculto. Durante a intro, o conteúdo fica inert; ao terminar, foco/rolagem são liberados. Reduced-motion elimina transições e tempo mínimo. Testes em desktop/mobile, reduced-motion, script bloqueado e JS desativado.

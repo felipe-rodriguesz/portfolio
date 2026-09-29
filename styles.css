@@ -1111,3 +1111,15 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 .skill-item { padding:4px 0; transition:background .25s; }
 .skill-item:hover { background:rgba(155,215,209,.05); }
 @media(prefers-reduced-motion:reduce) { .motion-part { transform:none!important; opacity:1!important; } }
+/* Intro: resource progress fills the personal monogram from bottom to top. */
+#preloader { font-family:var(--font); transition:opacity .45s var(--ease); }
+#preloader.is-leaving { opacity:0; pointer-events:none; }
+.loader-content { width:240px; text-align:center; }
+.loader-monogram { position:relative; display:inline-block; font:600 112px/1 var(--font); letter-spacing:-.09em; padding-right:10px; color:#ffffff16; }
+.loader-fill { position:absolute; inset:0; padding-right:10px; color:var(--accent); clip-path:inset(calc(100% - var(--progress,0%)) 0 0 0); }
+.loader-identity { margin-top:25px; font:10px/1.8 var(--mono); letter-spacing:.13em; }
+.loader-identity span { display:block; color:var(--muted); font-size:9px; }
+.loader-progress { display:flex; align-items:center; gap:18px; margin-top:30px; }
+.loader-track { flex:1; height:1px; background:var(--line); }
+.loader-track i { display:block; width:var(--progress,0%); height:100%; background:var(--accent); }
+.loader-percent { width:36px; text-align:right; font:11px var(--mono); color:var(--accent); }

@@ -1,5 +1,6 @@
 /* Optional enhancement: content and controls work without this module or GSAP. */
-(() => {
+(async () => {
+  await (window.portfolioReady || Promise.resolve());
   if (!window.gsap || !window.ScrollTrigger) return;
   const { gsap, ScrollTrigger } = window;
   gsap.registerPlugin(ScrollTrigger);

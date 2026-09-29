@@ -9,6 +9,7 @@ Portfólio pessoal com foco em desenvolvimento full stack, com projetos em Java,
 - `index.html`: conteúdo e semântica, seis projetos, retrato e diagramas SVG próprios.
 - `styles.css`: tokens, composição editorial, componentes e breakpoints.
 - `script.js`: menu, cópia de e-mail, carrossel nativo e indicação de seção ativa.
+- `preloader.js`: intro com progresso dos recursos essenciais, saída suave e limite de segurança de seis segundos.
 - `motion.js`: timelines, máscaras, desenho SVG e profundidade com GSAP/ScrollTrigger 3.13.0.
 - `assets/vendor/`: dependências fixadas, servidas localmente; avisos de licença preservados.
 - `docs/design-audit.md`: auditoria e decisões de design/performance.

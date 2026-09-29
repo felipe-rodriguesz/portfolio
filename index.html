@@ -2,6 +2,28 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
+  <style>
+    #preloader{display:none}html.is-loading{overflow:hidden}
+    html.is-loading #preloader{display:grid;position:fixed;inset:0;z-index:1000;place-items:center;background:#0b1017;color:#f0f0e9}
+  </style>
+  <script>
+    (() => {
+      document.documentElement.classList.add('is-loading');
+      let resolve, finished = false;
+      window.portfolioReady = new Promise(done => { resolve = done; });
+      window.finishPortfolioLoading = () => {
+        if (finished) return;
+        finished = true;
+        clearTimeout(window.portfolioLoadingTimeout);
+        document.documentElement.classList.remove('is-loading');
+        document.querySelectorAll('[data-loading-inert]').forEach(el => { el.inert = false; el.removeAttribute('data-loading-inert'); });
+        document.getElementById('preloader')?.remove();
+        resolve();
+      };
+      window.portfolioLoadingTimeout = setTimeout(window.finishPortfolioLoading, 6000);
+      window.addEventListener('pageshow', event => { if (event.persisted) window.finishPortfolioLoading(); });
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d1c">
   <meta name="description" content="Portfólio de Felipe Rodrigues, estudante de Engenharia de Computação na UTFPR. Projetos em desenvolvimento full stack, APIs, automação e engenharia.">
@@ -14,10 +36,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=motion-2">
+  <link rel="stylesheet" href="styles.css?v=loader-1">
   <title>Felipe Rodrigues | Portfólio de Desenvolvimento Full Stack</title>
 </head>
 <body>
+  <div id="preloader" role="status" aria-label="Carregando o portfólio de Felipe Rodrigues">
+    <div class="loader-content">
+      <div class="loader-monogram" aria-hidden="true"><span>fr.</span><span class="loader-fill">fr.</span></div>
+      <div class="loader-identity" aria-hidden="true">FELIPE RODRIGUES<span>COMPUTER ENGINEERING</span></div>
+      <div class="loader-progress" aria-hidden="true"><span class="loader-track"><i></i></span><span class="loader-percent">0%</span></div>
+    </div>
+  </div>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header"><div class="container header-inner">
     <a class="brand" href="#inicio" aria-label="Felipe Rodrigues, voltar ao início"><span class="brand-mark" aria-hidden="true">fr.</span><span>FELIPE RODRIGUES</span></a>
@@ -104,9 +133,10 @@
     </div>
   </main>
   <footer class="site-footer"><div class="container"><span>© 2026 Felipe Rodrigues</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
+  <script src="preloader.js?v=1" defer></script>
   <script src="script.js" defer></script>
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-  <script src="motion.js?v=motion-2" defer></script>
+  <script src="motion.js?v=loader-1" defer></script>
 </body>
 </html>
