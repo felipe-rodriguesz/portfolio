@@ -6,7 +6,7 @@
   gsap.registerPlugin(ScrollTrigger);
   const motion = Object.freeze({ fast: .22, standard: .65, cinematic: 1.05, ease: 'power3.out', stagger: .09 });
   const media = gsap.matchMedia();
-  media.add({ desktop: '(min-width: 741px)', mobile: '(max-width: 740px)', reduce: '(prefers-reduced-motion: reduce)' }, (context) => {
+  media.add({ desktop: '(min-width: 1001px)', mobile: '(max-width: 1000px)', reduce: '(prefers-reduced-motion: reduce)' }, (context) => {
     if (context.conditions.reduce) return;
     const desktop = context.conditions.desktop;
     // Split only visual text; preserve a single accessible heading and restore on cleanup.
@@ -51,7 +51,7 @@
     system.from('.system-map > span', { opacity: 0, stagger: .15, duration: motion.standard }, 0);
     gsap.from('.skill-meter span', { scaleX: 0, duration: .9, stagger: .045, ease: motion.ease,
       scrollTrigger: { trigger: '.skills-grid', start: 'top 88%', once: true } });
-    gsap.from('.featured-card', { clipPath: 'inset(0 0 100% 0)', y: 35, duration: 1, stagger: .12, ease: motion.ease,
+    if (!desktop) gsap.from('.featured-card', { clipPath: 'inset(0 0 100% 0)', y: 35, duration: 1, stagger: .12, ease: motion.ease,
       scrollTrigger: { trigger: '.projects-viewport', start: 'top 91%', toggleActions: 'play none none reverse' } });
     gsap.from('.contact-intro, .contact-panel', { x: i => i ? 35 : -35, opacity: 0, stagger: .15, duration: .85,
       scrollTrigger: { trigger: '.section-contact', start: 'top 96%', toggleActions: 'play none none reverse' } });
@@ -81,6 +81,43 @@
     return () => {
       observer.disconnect(); document.removeEventListener('visibilitychange', sync);
       originals.forEach(([el, html, label]) => { el.innerHTML = html; label === null ? el.removeAttribute('aria-label') : el.setAttribute('aria-label', label); });
+    };
+  });
+  media.add('(min-width: 1001px) and (min-height: 650px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+    const section = document.querySelector('.section-projects');
+    const viewport = section.querySelector('.projects-viewport');
+    const parent = document.querySelector('.final-sections');
+    const images = [...section.querySelectorAll('.featured-image')];
+    const controller = new AbortController();
+    parent.classList.add('projects-scroll-enabled');
+    const hint = document.createElement('p');
+    hint.className = 'project-scroll-hint';
+    hint.textContent = 'ROLE PARA EXPLORAR OS 6 PROJETOS →';
+    section.querySelector('.section-heading').after(hint);
+    const distance = () => Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+    const sequence = gsap.timeline({ scrollTrigger: {
+      trigger: section, start: 'top 80px', end: () => `+=${Math.max(1200, distance() * 1.25)}`,
+      pin: true, scrub: .45, invalidateOnRefresh: true, anticipatePin: 1
+    } });
+    sequence.fromTo(viewport, { scrollLeft: 0 }, { scrollLeft: distance, duration: 3, ease: 'none' }, .5);
+    images.forEach((image, index) => {
+      const start = index < 3 ? index * .15 : .65 + (index - 3) * .85;
+      sequence.fromTo(image, { clipPath: 'inset(0 0 88% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: .85, ease: 'none' }, start);
+    });
+    const trigger = sequence.scrollTrigger;
+    window.portfolioProjectScroll = left => {
+      const ratio = Math.min(1, Math.max(0, left / (distance() || 1)));
+      const progress = (.5 + ratio * 3) / sequence.duration();
+      window.scrollTo({ top: trigger.start + progress * (trigger.end - trigger.start), behavior: 'smooth' });
+    };
+    // Keyboard focus must also bring an offscreen project into view in the scroll narrative.
+    viewport.addEventListener('focusin', event => {
+      const card = event.target.closest('.featured-card');
+      if (card) window.portfolioProjectScroll(card.offsetLeft - viewport.querySelector('.featured-card').offsetLeft);
+    }, { signal: controller.signal });
+    return () => {
+      controller.abort(); delete window.portfolioProjectScroll;
+      parent.classList.remove('projects-scroll-enabled'); hint.remove();
     };
   });
   media.add('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {

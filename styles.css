@@ -1187,3 +1187,10 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 @media(prefers-reduced-motion:reduce), (hover:none), (pointer:coarse) {
   .pointer-light,.pointer-card::after { display:none; }
 }
+
+/* Desktop project chapter: vertical scroll advances the native horizontal reel. */
+.projects-scroll-enabled { display:block; }
+.projects-scroll-enabled .section-projects { min-height:calc(100svh - 80px); }
+.projects-scroll-enabled .projects-viewport { scroll-snap-type:none; overflow-x:hidden; }
+.projects-scroll-enabled .featured-image { height:clamp(180px,27svh,290px); }
+.project-scroll-hint { margin:0 0 20px; color:var(--muted); font:9px var(--mono); letter-spacing:.12em; }

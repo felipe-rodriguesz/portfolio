@@ -71,6 +71,10 @@ if (carousel) {
 
     function goTo(index, smooth = true) {
         currentIndex = Math.max(0, Math.min(index, maxIndex));
+        if (smooth && window.portfolioProjectScroll) {
+            window.portfolioProjectScroll(currentIndex * stepWidth());
+            return;
+        }
         viewport.scrollTo({
             left: currentIndex * stepWidth(),
             behavior: smooth && !reducedMotion.matches ? 'smooth' : 'instant'
