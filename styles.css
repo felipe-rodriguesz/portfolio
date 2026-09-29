@@ -1168,3 +1168,22 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 }
 /* The projected light also catches the lower edge of the portrait. */
 .hero-light { z-index:3; mix-blend-mode:screen; }
+/* Mouse illumination: transform-only follower and a local surface/border reflection. */
+.pointer-light {
+  position:fixed; top:0; left:0; width:640px; height:640px;
+  margin:-320px 0 0 -320px; z-index:9; pointer-events:none;
+  background:radial-gradient(circle,rgba(164,137,255,.13),rgba(98,178,220,.055) 35%,transparent 68%);
+  mix-blend-mode:screen; opacity:0; transition:opacity .35s; will-change:transform;
+}
+.pointer-light.is-active { opacity:1; }
+.pointer-card { position:relative; isolation:isolate; }
+.pointer-card::after {
+  content:''; position:absolute; inset:0; z-index:4; border-radius:inherit;
+  pointer-events:none; opacity:0; transition:opacity .3s;
+  background:radial-gradient(260px circle at var(--pointer-x,50%) var(--pointer-y,50%),rgba(181,153,255,.16),transparent 75%);
+  box-shadow:inset 0 0 0 1px rgba(187,164,255,.22);
+}
+.pointer-card.is-lit::after { opacity:1; }
+@media(prefers-reduced-motion:reduce), (hover:none), (pointer:coarse) {
+  .pointer-light,.pointer-card::after { display:none; }
+}

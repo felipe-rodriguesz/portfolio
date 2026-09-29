@@ -85,6 +85,47 @@
   });
   media.add('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
     const controller = new AbortController();
+    // One pointer light for the page; card coordinates update at most once per frame.
+    const glow = document.createElement('div');
+    glow.className = 'pointer-light'; glow.setAttribute('aria-hidden', 'true');
+    document.body.append(glow);
+    const glowX = gsap.quickTo(glow, 'x', { duration: .45, ease: 'power2.out' });
+    const glowY = gsap.quickTo(glow, 'y', { duration: .45, ease: 'power2.out' });
+    const cards = [...document.querySelectorAll('.featured-card, .about-copy, .experience-card, .contact-intro, .contact-panel, .skill-column')];
+    cards.forEach(card => card.classList.add('pointer-card'));
+    let lightFrame = 0, pointerX = 0, pointerY = 0, activeCard = null, tracking = false;
+    function drawLight() {
+      lightFrame = 0;
+      if (!tracking) return;
+      const card = document.elementFromPoint(pointerX, pointerY)?.closest('.pointer-card');
+      if (activeCard !== card) {
+        activeCard?.classList.remove('is-lit');
+        activeCard = card;
+        activeCard?.classList.add('is-lit');
+      }
+      if (card) {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--pointer-x', `${pointerX - rect.left}px`);
+        card.style.setProperty('--pointer-y', `${pointerY - rect.top}px`);
+      }
+    }
+    function scheduleLight() { if (!lightFrame && tracking) lightFrame = requestAnimationFrame(drawLight); }
+    function hideLight() {
+      tracking = false; glow.classList.remove('is-active');
+      activeCard?.classList.remove('is-lit'); activeCard = null;
+      cancelAnimationFrame(lightFrame); lightFrame = 0;
+    }
+    document.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse') return;
+      pointerX = event.clientX; pointerY = event.clientY;
+      if (!tracking) gsap.set(glow, { x: pointerX, y: pointerY });
+      tracking = true; glow.classList.add('is-active');
+      glowX(pointerX); glowY(pointerY); scheduleLight();
+    }, { signal:controller.signal, passive:true });
+    document.addEventListener('scroll', scheduleLight, { signal:controller.signal, passive:true, capture:true });
+    document.documentElement.addEventListener('pointerleave', hideLight, { signal:controller.signal });
+    window.addEventListener('blur', hideLight, { signal:controller.signal });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) hideLight(); }, { signal:controller.signal });
     const hero = document.querySelector('.hero-visual');
     const xTo = gsap.quickTo('.engineering-orbit', 'x', { duration: .7, ease: motion.ease });
     const yTo = gsap.quickTo('.orbit-node', 'y', { duration: .7, ease: motion.ease });
@@ -120,7 +161,13 @@
       item.addEventListener('pointerenter', () => scale(1.25), { signal: controller.signal });
       item.addEventListener('pointerleave', () => scale(1), { signal: controller.signal });
     });
-    return () => controller.abort();
+    return () => {
+      controller.abort(); hideLight(); glow.remove();
+      cards.forEach(card => {
+        card.classList.remove('pointer-card', 'is-lit');
+        card.style.removeProperty('--pointer-x'); card.style.removeProperty('--pointer-y');
+      });
+    };
   });
   // Revert transforms/listeners on real navigation; retain state for back-forward cache.
   window.addEventListener('pagehide', event => { if (!event.persisted) media.revert(); });
