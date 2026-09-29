@@ -27,3 +27,6 @@ Não se adicionou Barba (não há troca de páginas), ScrollSmoother (rolagem na
 matchMedia reverte timelines e ScrollTriggers ao trocar breakpoints/preferência de movimento. Listeners de pointer removidos via AbortController. Sem RAF decorativo permanente, canvas ou GLB. SVG usa viewBox e imagem tem dimensões explícitas. Reduced motion mantém toda a informação sem reveals/parallax. Menu, carrossel por teclado, skip link, foco, status de cópia e semântica preservados. Dependências de motion ~117 KB sem compressão.
 
 Referências técnicas: https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/ e https://gsap.com/docs/v3/Plugins/ScrollTrigger/.
+
+## Revisão de motion após feedback
+A primeira passagem ficou discreta demais. A segunda acrescenta caracteres com perspectiva no nome, títulos com máscaras por palavra e reversão ao sair da tela, contraste progressivo no texto, revelação escalonada dos projetos, parallax mais perceptível, órbita ativa somente no hero visível e aba ativa, inclinação das capas e botões magnéticos para mouse preciso. O split usa aria-label e é desfeito no cleanup; reduced-motion remove todos os ScrollTriggers e restaura o HTML original. Testado em navegador: matrizes dos caracteres mudam durante a entrada, 11 triggers desktop, zero após reduced-motion, sem duplicação de split e sem erros JS.

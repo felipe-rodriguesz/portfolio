@@ -1101,3 +1101,13 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 .featured-card:hover .project-diagram {
   color:#f0f0e9;
 }
+
+/* Typography masks preserve whole words and natural wrapping. */
+.motion-word { display:inline-block; overflow:hidden; vertical-align:bottom; padding-bottom:.09em; margin-bottom:-.09em; perspective:700px; }
+.motion-part { display:inline-block; }
+.hero h1 .motion-word { overflow:visible; }
+.title-line { perspective:900px; }
+.section { overflow:clip; }
+.skill-item { padding:4px 0; transition:background .25s; }
+.skill-item:hover { background:rgba(155,215,209,.05); }
+@media(prefers-reduced-motion:reduce) { .motion-part { transform:none!important; opacity:1!important; } }
