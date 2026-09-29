@@ -1115,8 +1115,14 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 #preloader { font-family:var(--font); transition:opacity .45s var(--ease); }
 #preloader.is-leaving { opacity:0; pointer-events:none; }
 .loader-content { width:240px; text-align:center; }
-.loader-monogram { position:relative; display:inline-block; font:600 112px/1 var(--font); letter-spacing:-.09em; padding-right:10px; color:#ffffff16; }
-.loader-fill { position:absolute; inset:0; padding-right:10px; color:var(--accent); clip-path:inset(calc(100% - var(--progress,0%)) 0 0 0); }
+/* Crop only in layout: preserve the supplied logo artwork unchanged. */
+.loader-monogram { position:relative; width:230px; height:215px; margin:auto; overflow:hidden; }
+.loader-monogram img { position:absolute; width:365px; max-width:none; height:365px; left:-67px; top:-37px; }
+.loader-logo-base { opacity:.16; }
+.loader-fill { position:absolute; inset:0; clip-path:inset(calc(100% - var(--progress,0%)) 0 0 0); }
+.brand-logo { position:relative; display:block; width:48px; height:46px; overflow:hidden; flex:none; }
+.brand-logo img { position:absolute; width:77px; max-width:none; height:77px; left:-14px; top:-8px; }
+.brand-logo,.loader-monogram { mix-blend-mode:screen; }
 .loader-identity { margin-top:25px; font:10px/1.8 var(--mono); letter-spacing:.13em; }
 .loader-identity span { display:block; color:var(--muted); font-size:9px; }
 .loader-progress { display:flex; align-items:center; gap:18px; margin-top:30px; }

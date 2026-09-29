@@ -31,13 +31,15 @@
     if (progress >= 100 && now-started >= (reduced.matches ? 0 : 700)) { exit(); return; }
     frame = requestAnimationFrame(render);
   }
-  const portrait = document.querySelector('.portrait-frame img');
-  const imageReady = !portrait || portrait.complete ? Promise.resolve() : new Promise(resolve => {
-    portrait.addEventListener('load', resolve, { once: true, signal: controller.signal });
-    portrait.addEventListener('error', resolve, { once: true, signal: controller.signal });
-  });
+  function imageReady(image) {
+    if (!image || image.complete) return Promise.resolve();
+    return new Promise(resolve => {
+      image.addEventListener('load', resolve, { once:true, signal:controller.signal });
+      image.addEventListener('error', resolve, { once:true, signal:controller.signal });
+    });
+  }
   // Percent counts completed critical resources, not downloaded bytes.
-  const resources = [imageReady, document.fonts?.ready || Promise.resolve(), Promise.resolve()];
+  const resources = [imageReady(document.querySelector('.portrait-frame img')), imageReady(loader.querySelector('img')), document.fonts?.ready || Promise.resolve(), Promise.resolve()];
   let completed = 0;
   resources.forEach(resource => Promise.resolve(resource).catch(() => {}).then(() => { target = ++completed / resources.length * 100; }));
   frame = requestAnimationFrame(render);
