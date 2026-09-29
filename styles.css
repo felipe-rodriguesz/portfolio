@@ -1194,3 +1194,9 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 .projects-scroll-enabled .projects-viewport { scroll-snap-type:none; overflow-x:hidden; }
 .projects-scroll-enabled .featured-image { height:clamp(180px,27svh,290px); }
 .project-scroll-hint { margin:0 0 20px; color:var(--muted); font:9px var(--mono); letter-spacing:.12em; }
+
+/* Small highlight on the featured technology icons; entrance stays on the li. */
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .hero-stack img { transition:transform .3s var(--ease); }
+  .hero-stack li:hover img { transform:translateY(-4px) scale(1.1) rotate(-3deg); }
+}

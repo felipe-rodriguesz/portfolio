@@ -177,6 +177,21 @@
       yTo(((e.clientY - bounds.top) / bounds.height - .5) * 12);
     }, { signal: controller.signal, passive: true });
     hero.addEventListener('pointerleave', () => { xTo(0); yTo(0); }, { signal: controller.signal });
+    const portraitFrame = document.querySelector('.portrait-frame');
+    const portrait = portraitFrame.querySelector('img');
+    gsap.set(portrait, { transformPerspective:900, transformOrigin:'50% 80%' });
+    const portraitX = gsap.quickTo(portrait, 'rotationX', { duration:.6, ease:motion.ease });
+    const portraitY = gsap.quickTo(portrait, 'rotationY', { duration:.6, ease:motion.ease });
+    const portraitScale = gsap.quickTo(portrait, 'scale', { duration:.6, ease:motion.ease });
+    portraitFrame.addEventListener('pointerenter', () => portraitScale(1.015), { signal:controller.signal });
+    portraitFrame.addEventListener('pointermove', event => {
+      const rect = portraitFrame.getBoundingClientRect();
+      portraitX(-((event.clientY-rect.top)/rect.height-.5)*3);
+      portraitY(((event.clientX-rect.left)/rect.width-.5)*4);
+    }, { signal:controller.signal, passive:true });
+    portraitFrame.addEventListener('pointerleave', () => {
+      portraitX(0); portraitY(0); portraitScale(1);
+    }, { signal:controller.signal });
     document.querySelectorAll('.featured-card').forEach(card => {
       const image = card.querySelector('.featured-image');
       const rotateX = gsap.quickTo(image, 'rotationX', { duration: .45, ease: motion.ease });
