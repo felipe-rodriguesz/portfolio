@@ -58,8 +58,18 @@
     // One ambient gesture, only while the hero is visible and the tab is active.
     const ring = document.querySelector('.engineering-orbit');
     const ambient = gsap.to('.orbit-node', { rotation: 360, svgOrigin: '300 300', duration: 22, repeat: -1, ease: 'none', paused: true });
+    const light = gsap.timeline({ repeat: -1, paused: true, defaults: { duration: 4, ease: 'sine.inOut' } });
+    light.to('.light-violet', { opacity: 0 }, 1)
+      .to('.light-blue', { opacity: 1 }, 1)
+      .to('.light-blue', { opacity: 0 }, 6)
+      .to('.light-cyan', { opacity: 1 }, 6)
+      .to('.light-cyan', { opacity: 0 }, 11)
+      .to('.light-violet', { opacity: 1 }, 11);
     let heroVisible = false;
-    const sync = () => heroVisible && !document.hidden ? ambient.resume() : ambient.pause();
+    const sync = () => {
+      const active = heroVisible && !document.hidden;
+      [ambient, light].forEach(animation => active ? animation.resume() : animation.pause());
+    };
     const observer = new IntersectionObserver(entries => { heroVisible = entries[0].isIntersecting; sync(); });
     observer.observe(ring);
     document.addEventListener('visibilitychange', sync);

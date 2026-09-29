@@ -33,3 +33,6 @@ A primeira passagem ficou discreta demais. A segunda acrescenta caracteres com p
 
 ## Introdução de carregamento
 A pedido do usuário, aplicado o conceito da referência: overlay fixo, monograma preenchido verticalmente e progresso suavizado dos recursos essenciais (retrato, fontes e DOM). Não representa bytes transferidos. Preloader independente de GSAP com saída de 450 ms; motion aguarda a liberação. Bootstrap inline libera a página em no máximo seis segundos mesmo se o script externo falhar. Sem JS o overlay permanece oculto. Durante a intro, o conteúdo fica inert; ao terminar, foco/rolagem são liberados. Reduced-motion elimina transições e tempo mínimo. Testes em desktop/mobile, reduced-motion, script bloqueado e JS desativado.
+
+## Luz projetada no hero
+A referência fornecida usa imagem, vídeo e fade no hero; o código não demonstra a origem exata da iluminação da captura. Recriado com três campos de gradiente estáticos (violeta, azul, ciano), linha luminosa na base e crossfade GSAP de 15 segundos. Apenas opacidade é animada; não há vídeo adicional, blur animado ou WebGL. Timeline pausa fora de tela e com aba oculta; reduced-motion preserva luz violeta estática.

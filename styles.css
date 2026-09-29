@@ -1149,3 +1149,22 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
   .hero-stack ul { margin-top:10px; }
   .hero-bottom { bottom:16px; padding-top:12px; }
 }
+/* Projected light: three static gradients crossfade, avoiding animated blur. */
+.hero-visual { isolation:isolate; }
+.portrait-halo { z-index:0; opacity:.6; }
+.engineering-orbit { z-index:1; }
+.portrait-frame { z-index:2; }
+.visual-caption { z-index:4; }
+.hero-light { position:absolute; inset:0 -10% 0; z-index:1; pointer-events:none; }
+.light-field { position:absolute; inset:8% -8% 20px; opacity:0; background:radial-gradient(ellipse 45% 12% at 50% 94%,rgba(var(--light-rgb),.85),transparent 75%),radial-gradient(ellipse 56% 65% at 50% 100%,rgba(var(--light-rgb),.5),transparent 80%); }
+.light-violet { --light-rgb:153,72,255; opacity:1; }
+.light-blue { --light-rgb:65,114,255; }
+.light-cyan { --light-rgb:70,217,232; }
+.light-horizon { position:absolute; bottom:32px; left:12%; right:12%; height:2px; border-radius:50%; background:linear-gradient(90deg,transparent,#c5b4ff 30%,#f1eaff 50%,#a9c9ff 70%,transparent); box-shadow:0 0 12px 2px #b399ff55; }
+@media(max-width:740px) {
+  .hero-light { inset:0 -3%; }
+  .light-field { inset:0 0 20px; }
+  .light-horizon { left:7%; right:7%; bottom:28px; }
+}
+/* The projected light also catches the lower edge of the portrait. */
+.hero-light { z-index:3; mix-blend-mode:screen; }
