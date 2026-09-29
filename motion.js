@@ -1,6 +1,5 @@
 /* Optional enhancement: content and controls work without this module or GSAP. */
-(async () => {
-  await (window.portfolioReady || Promise.resolve());
+(() => {
   if (!window.gsap || !window.ScrollTrigger) return;
   const { gsap, ScrollTrigger } = window;
   gsap.registerPlugin(ScrollTrigger);
@@ -28,12 +27,17 @@
       return element.querySelectorAll('.motion-part');
     }
     const heroChars = [...document.querySelectorAll('.title-line > span')].flatMap(el => [...split(el, true)]);
-    const entrance = gsap.timeline({ defaults: { ease: motion.ease, duration: motion.standard } });
+    const entrance = gsap.timeline({ paused: document.documentElement.classList.contains('is-loading'), defaults: { ease: motion.ease, duration: motion.standard } });
     entrance.from(heroChars, { yPercent: 115, rotationX: -65, opacity: 0, duration: 1.25, stagger: .045, transformOrigin: '50% 100%' })
       .from('.hero .eyebrow', { opacity: 0, x: -25 }, 0)
       .from('.hero-role, .hero-copy > p, .hero-actions', { opacity: 0, y: 22, stagger: .12 }, .55)
       .from('.hero-visual', { clipPath: 'inset(100% 0 0 0)', duration: 1.4 }, .15)
       .from('.hero-stack li', { opacity: 0, scale: .55, y: 16, stagger: .065, ease: 'back.out(1.5)' }, .85);
+    // Prepare hidden entry states under the loader, then play during its exit.
+    let entryDisposed = false;
+    const playEntrance = () => { if (!entryDisposed) entrance.play(); };
+    window.addEventListener('portfolio:reveal', playEntrance, { once:true });
+    window.portfolioReady?.then(playEntrance);
     document.querySelectorAll('.section h2').forEach(heading => {
       const parts = split(heading);
       gsap.from(parts, { yPercent: 110, rotation: 3, duration: .85, stagger: .085, ease: motion.ease,
@@ -79,6 +83,7 @@
       gsap.to('.portrait-halo', { y: 45, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .6 } });
     }
     return () => {
+      entryDisposed = true; window.removeEventListener('portfolio:reveal', playEntrance);
       observer.disconnect(); document.removeEventListener('visibilitychange', sync);
       originals.forEach(([el, html, label]) => { el.innerHTML = html; label === null ? el.removeAttribute('aria-label') : el.setAttribute('aria-label', label); });
     };

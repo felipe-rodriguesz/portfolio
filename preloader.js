@@ -7,6 +7,7 @@
   const started = performance.now();
   const percent = loader.querySelector('.loader-percent');
   let target = 0, progress = 0, frame = 0, done = false, exitTimer = 0;
+  let transition = null, flyingLogo = null, headerLogo = null;
   document.querySelectorAll('.skip-link, .site-header, main, .site-footer').forEach(el => {
     el.setAttribute('data-loading-inert', ''); el.inert = true;
   });
@@ -16,12 +17,42 @@
     cancelAnimationFrame(frame);
     clearTimeout(exitTimer);
     controller.abort();
+    transition?.kill(); flyingLogo?.remove();
+    if (headerLogo) headerLogo.style.removeProperty('opacity');
     window.finishPortfolioLoading();
   }
   function exit() {
-    loader.classList.add('is-leaving');
-    loader.addEventListener('transitionend', e => { if (e.target === loader) finish(); }, { signal: controller.signal });
-    exitTimer = setTimeout(finish, reduced.matches ? 0 : 500);
+    const source = loader.querySelector('.loader-monogram');
+    headerLogo = document.querySelector('.brand-logo');
+    if (reduced.matches || !window.gsap || !source || !headerLogo) {
+      window.dispatchEvent(new Event('portfolio:reveal'));
+      loader.classList.add('is-leaving');
+      exitTimer = setTimeout(finish, reduced.matches ? 0 : 500);
+      return;
+    }
+    const from = source.getBoundingClientRect();
+    const to = headerLogo.getBoundingClientRect();
+    flyingLogo = source.cloneNode(true);
+    flyingLogo.classList.add('loader-flying-logo');
+    Object.assign(flyingLogo.style, {
+      position:'fixed', left:`${from.left}px`, top:`${from.top}px`,
+      width:`${from.width}px`, height:`${from.height}px`, margin:'0',
+      zIndex:'1002', pointerEvents:'none', transformOrigin:'0 0'
+    });
+    flyingLogo.style.setProperty('--progress', '100%');
+    document.body.append(flyingLogo);
+    gsap.set([source, headerLogo], { opacity:0 });
+    // Keep the traveling logo separate from the fading full-screen overlay.
+    loader.style.transition = 'none';
+    transition = gsap.timeline({ onComplete:finish });
+    transition.to('.loader-identity, .loader-progress', { opacity:0, y:-8, duration:.22 }, 0)
+      .to(loader, { opacity:0, duration:.55, ease:'power2.inOut' }, .08)
+      .call(() => window.dispatchEvent(new Event('portfolio:reveal')), [], .12)
+      .to(flyingLogo, { x:to.left-from.left, y:to.top-from.top,
+        scaleX:to.width/from.width, scaleY:to.height/from.height,
+        duration:1.05, ease:'power3.inOut' }, 0)
+      .set(headerLogo, { opacity:1 }, 1.05);
+    exitTimer = setTimeout(finish, 1500);
   }
   function render(now) {
     if (!document.documentElement.classList.contains('is-loading')) { finish(); return; }
