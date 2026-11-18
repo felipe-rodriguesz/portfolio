@@ -1200,3 +1200,27 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
   .hero-stack img { transition:transform .3s var(--ease); }
   .hero-stack li:hover img { transform:translateY(-4px) scale(1.1) rotate(-3deg); }
 }
+
+/* Tall portrait screens wider than a phone: tablets held upright and phones in
+   "desktop site" mode. Viewport-height chapters would stretch far past their
+   content there, so the hero stacks and every chapter sizes to its content. */
+@media(min-width:741px) and (max-aspect-ratio:4/5) {
+  .hero-inner {
+    grid-template-columns:1fr;
+    min-height:0;
+    gap:0;
+    padding:clamp(48px,7vw,80px) 0 104px;
+  }
+  .hero h1 { font-size:clamp(76px,12.5vw,150px); margin:26px 0 22px; }
+  .hero-role { font-size:clamp(22px,2.8vw,30px); }
+  .hero-copy>p { font-size:clamp(14px,1.7vw,17px); max-width:560px; }
+  .hero-actions { margin:24px 0 32px; }
+  .hero-stack { max-width:none; }
+  .hero-stack ul { gap:clamp(18px,3vw,30px); }
+  .hero-stack img { width:clamp(32px,4vw,42px); height:clamp(32px,4vw,42px); }
+  .hero-visual { min-height:clamp(440px,64vw,760px); margin-top:36px; }
+  .portrait-frame { width:min(80%,680px); }
+  .portrait-halo { inset:0 16% 0; }
+  .engineering-orbit { width:84%; left:8%; top:0; }
+  .profile-sections,.final-sections { min-height:0; }
+}
